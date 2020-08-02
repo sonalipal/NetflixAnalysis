@@ -113,17 +113,18 @@ var svg = d3.select("body")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    attr("align","center")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
     
-  $("svg").css({top: 200, left: 200, position:'absolute'})
+//d3.select("#chart").attr("align","center");
 
   svg.append("text")
         .attr("x", (10))             
         .attr("y", (30))
         .attr("text-anchor", "left")  
-        .style("font-size", "18px") 
+        .style("font-size", "15px") 
         .style("text-decoration", "underline")  
         .attr("stroke", "grey")  
         .text("Revenue in mil. USD-$");
@@ -132,7 +133,7 @@ var svg = d3.select("body")
         .attr("x", (10))             
         .attr("y", (60))
         .attr("text-anchor", "left")  
-        .style("font-size", "18px") 
+        .style("font-size", "15px") 
         .style("text-decoration", "underline")
         .attr("stroke", "grey")  
         .text("Hover over each dot to see yearly revenue");
@@ -142,7 +143,7 @@ var svg = d3.select("body")
         .attr("x", (400))             
         .attr("y", (330))
         .attr("text-anchor", "left")  
-        .style("font-size", "18px") 
+        .style("font-size", "15px") 
         .attr("stroke", "grey")  
         .text("Revenue grew ~3 times since 2015...");
 
