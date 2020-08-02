@@ -1,8 +1,98 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<style> /* set the CSS */
+
+  body { font: 12px Arial;}
+  
+  div.tooltip {	
+      position: absolute;			
+      text-align: center;			
+      width: 60px;					
+      height: 28px;					
+      padding: 2px;				
+      font: 12px sans-serif;		
+      background: black;	
+      border: 0px;		
+      border-radius: 8px;			
+      pointer-events: none;			
+  }
+  
+  body{
+          background-color: whitesmoke;
+       }
+  
+      :root {
+        --line-chart-color: #4682b4;
+        --annotation-context-color: rgb(52, 11, 235);
+        --annotation-above-color: #00BFA5;
+        --annotation-anomaly-color: #E8336D;
+      }
+  
+       svg {
+          background-color: white;
+          font-family: 'Lato';
+       }
+  
+       .axis, .axis text {
+         fill: var(--line-chart-color);
+       }
+  
+       .axis line, path {
+        stroke: "black" 
+        stroke-width: 2px;
+       }
+       //var(--line-chart-color);
+  
+       path {
+         fill: none;
+       }
+  
+  
+  
+      text.title {
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+  
+      .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .option-select {
+  margin-top: 20px;
+  margin-left: 40px;
+  fill: #64b646;
+  width: 100;
+  }
+  
+  </style>
+
+<body>
+  <p> Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
+      founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
+      The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
+      including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
+      including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
+      Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
+      the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
+      Today, the company produces and distributes content from countries all over the globe.
+  </p>
+  
+  <text class="title"  style="background-color: #4CAF50; color: white; text-align: center; font-size: 16px ;" x=40 y=50>Select a group to see trend >> </text>
+
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
+
 
 <!-- Initialize a select button -->
 <select id="selectButton"></select>
@@ -15,9 +105,14 @@
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 100, bottom: 30, left: 50},
-    width = 660 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+//var margin = {top: 10, right: 100, bottom: 30, left: 50},
+    //width = 660 - margin.left - margin.right,
+    //height = 400 - margin.top - margin.bottom;
+
+    const margin = {top: 40, right: 100, bottom: 120, left: 50},
+    width = 960,
+    height = 500 
+  
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -28,96 +123,140 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+    
+  svg.append("text")
+        .attr("x", (10))             
+        .attr("y", (30))
+        .attr("text-anchor", "left")  
+        .style("font-size", "18px") 
+        .style("text-decoration", "underline")  
+        .attr("stroke", "grey")  
+        .text("New Movies/TV-Shows added per year");
+
+
+
 //Read the data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", function(data) {
 
-    // List of groups (here I have one group per column)
-    var allGroup = ["Total","Movies", "Shows"]
+     // List of groups (here I have one group per column)
+     var allGroup = ["Total","Movies", "Shows"]
 
-    // add the options to the button
-    d3.select("#selectButton")
-      .selectAll('myOptions')
-     	.data(allGroup)
-      .enter()
-    	.append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+// add the options to the button
+d3.select("#selectButton")
+  .selectAll('myOptions')
+   .data(allGroup)
+  .enter()
+  .append('option')
+  .attr("class", "option-select")
+  .text(function (d) { return d; }) // text showed in the menu
+  .attr("value", function (d) { return d; }) ;// corresponding value returned by the button
 
-    // A color scale: one color for each group
-    var myColor = d3.scaleOrdinal()
-      .domain(allGroup)
-      //.range(d3.schemeSet2);
-      .range(d3.schemeCategory10);
+// A color scale: one color for each group
+var myColor = d3.scaleOrdinal()
+  .domain(allGroup)
+  //.range(d3.schemeSet2);
+  .range(d3.schemeCategory10);
 
-    // Add X axis --> it is a date format
-    //var x = d3.scaleLinear()
-      //.domain([2009,2020])
-      //.range([ 0, width ]);
-    //svg.append("g")
-      //.attr("transform", "translate(0," + height + ")")
-      //.call(d3.axisBottom(x));
+// Add X axis --> it is a date format
+//var x = d3.scaleLinear()
+  //.domain([2009,2020])
+  //.range([ 0, width ]);
+//svg.append("g")
+  //.attr("transform", "translate(0," + height + ")")
+  //.call(d3.axisBottom(x));
+
+// Add one dot in the legend for each name.
+svg.selectAll("mydots")
+  .data(allGroup)
+  .enter()
+  .append("circle")
+    .attr("cx", 50)
+    .attr("cy", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 7)
+    .style("fill", function(d){ return myColor(d)})
+
+// Add one dot in the legend for each name.
+svg.selectAll("mylabels")
+  .data(allGroup)
+  .enter()
+  .append("text")
+    .attr("x", 70)
+    .attr("y", function(d,i){ return 50 + i*25} ) // 100 is where the first dot appears. 25 is the distance between dots function(d,i){ return 100 + i*25}
+    .style("fill", function(d){ return myColor(d)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
+    .attr("stroke", function(d){ return myColor(d)})  
+    .attr("font-size" , "16px")
     
-    // Add X axis --> it is a date format
-    var x =  d3.scaleLinear()   //d3.scaleTime()
-        .domain([2008,2019])                                  //.domain(d3.extent(data, function(d) { return +d.Year; }))
-      .range([ 0, width ]);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+  
 
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-       .domain([0, d3.max(data, function(d) { return +d.Total; })])       //.domain( [0,20])
-      .range([ height, 0 ]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
 
-    // Initialize line with group a
-    var line = svg
-      .append('g')
-      .append("path")
-        .datum(data)
-        .attr("d", d3.line()
-          .x(function(d) { return x(+d.Year) })
-          .y(function(d) { return y(+d.Total) })
-        )
-        .attr("stroke", function(d){ return myColor("Total") })
-        .style("stroke-width", 4)
-        .style("fill", "none")
+// Add X axis --> it is a date format
+var x =  d3.scaleLinear()   //d3.scaleTime()
+    .domain([2008,2019])                                  //.domain(d3.extent(data, function(d) { return +d.Year; }))
+  .range([ 0, width ]);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x));
 
-    // A function that update the chart
-    function update(selectedGroup) {
 
-      // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
-    
+// Add Y axis
+var y = d3.scaleLinear()
+   .domain([0, d3.max(data, function(d) { return +d.Total; })])       //.domain( [0,20])
+  .range([ height, 0 ]);
+svg.append("g")
+  .call(d3.axisLeft(y));
 
-      // Give these new data to update line
-      line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(function(d) { return x(+d.time) })
-            .y(function(d) { return y(+d.value) })
-          )
-          .attr("stroke", function(d){ return myColor(selectedGroup) })
-    }
+// Initialize line with group a
+var line = svg
+  .append('g')
+  .append("path")
+    .datum(data)
+    .attr("d", d3.line()
+      .x(function(d) { return x(+d.Year) })
+      .y(function(d) { return y(+d.Total) })
+    )
+    .attr("stroke", function(d){ return myColor("Total") })
+    .style("stroke-width", 4)
+    .style("fill", "none")
 
-    // When the button is changed, run the updateChart function
-    d3.select("#selectButton").on("change", function(d) {
-        // recover the option that has been chosen
-        var selectedOption = d3.select(this).property("value")
-        // run the updateChart function with this selected option
-        update(selectedOption)
-    })
+// A function that update the chart
+function update(selectedGroup) {
+
+  // Create new data with the selection?
+  var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
+
+
+  // Give these new data to update line
+  line
+      .datum(dataFilter)
+      .transition()
+      .duration(1000)
+      .attr("d", d3.line()
+        .x(function(d) { return x(+d.time) })
+        .y(function(d) { return y(+d.value) })
+      )
+      .attr("stroke", function(d){ return myColor(selectedGroup) })
+}
+
+// When the button is changed, run the updateChart function
+d3.select("#selectButton").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    update(selectedOption)
+})
 
 })
 
 </script>
-<p>Click Home to go back to Main Page
-          <form>
-          <button type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/index.html" >HOME</button>
-        </form>
-       </p>
+<p>   refernece : <a href="https://en.wikipedia.org/wiki/Netflix">wikipedia</a><br />
+        <a href="https://www.kaggle.com/shivamb/netflix-shows">kaggle</a>
+         
+      </p>
+      
+
+</body>
+   
