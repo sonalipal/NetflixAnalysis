@@ -71,17 +71,18 @@ body{
 
 </style>
 <body>
-    <p> Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
-        founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
-        The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
-        including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
-        including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
-        Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
-        the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
-        Today, the company produces and distributes content from countries all over the globe.
-    </p>
+  <p>
+    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="130" style="float:left"
+  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br>
+</br> </p></br>
+  </p>
+  <p style="font-size: 18px ; font: 'Lato'" x=30 y=500> Netflix is the world's leading internet entertainment service with 158 million paid memberships in over 190 countries enjoying TV series, documentaries and feature films across a wide variety of genres and languages.  
+    Back when Netflix started in 1998, they rented out and even sold DVD copies of content over the mail. The major shift happened in 2010 when they ushered into digital streaming services. 
+    They kept on investing in personalization and user experience, and that has made them one of the premier media streaming services in the world.  </br> </br>
+  This analysis is about establishing a correlation between Netflix's revenue growth, membership growth and the growth in total number of contents in recent years</p>
     
-    <text class="title" x=40 y=50>Netflix Paid-Membership Growth Analysis </text>
+    
+    <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; ">Netflix Paid-Membership Growth Analysis </text>
   
       <script src="https://d3js.org/d3.v4.js"></script>
      
@@ -100,7 +101,7 @@ body{
 // set the dimensions and margins of the graph
 const margin = {top: 40, right: 100, bottom: 40, left: 100},
     width = 960,
-    height = 500 
+    height = 320
   
   
     // Define the div for the tooltip
@@ -138,25 +139,25 @@ var svg = d3.select("body")
 
 
         svg.append("text")
-        .attr("x", (320))             
-        .attr("y", (300))
+        .attr("x", (360))             
+        .attr("y", (180))
         .attr("text-anchor", "left")  
         .style("font-size", "18px") 
         .attr("stroke", "grey")  
-        .text("Membership also grew ~ 3times since 2015...");
+        .text("Membership grew ~ 3times since 2015...");
 
        
         svg.append("text")
-        .attr("x", (610))             
-        .attr("y", (370))
+        .attr("x", (650))             
+        .attr("y", (235))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
         .attr("stroke", "grey")  
         .text("Member: 54 mil");
 
         svg.append("text")
-        .attr("x", (610))             
-        .attr("y", (355))
+        .attr("x", (650))             
+        .attr("y", (220))
         .attr("text-anchor", "left")  
         .style("font-size", "15px")  
         .attr("stroke", "grey")  
@@ -180,7 +181,7 @@ var svg = d3.select("body")
 
         svg.append("text")
         .attr("x", (320))             
-        .attr("y", (465))
+        .attr("y", (300))
         .attr("text-anchor", "left")  
         .style("font-size", "15px")  
         .attr("stroke", "grey")  
@@ -189,7 +190,7 @@ var svg = d3.select("body")
 
         svg.append("text")
         .attr("x", (320))             
-        .attr("y", (480))
+        .attr("y", (315))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
         .attr("stroke", "grey")  
@@ -215,7 +216,7 @@ var svg = d3.select("body")
         svg.append("line")
         
             .attr("x1",  650)
-            .attr("y1", 300)
+            .attr("y1", 180)
             .attr("x2", 925)
             .attr("y2", 0)
             .attr("stroke-width", 1)
@@ -277,7 +278,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
         .attr("r", 5)		
         .attr("cx", function(d) { return x(d.year); })		 
         .attr("cy", function(d) { return y(d.paid_membership); })	
-        .attr("fill" , "#4682b4")	
+        .attr("fill" , "red")	//#4682b4
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
@@ -297,7 +298,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "#4682b4")
+      .attr("stroke", "red")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.year) })
@@ -349,9 +350,11 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 
 </script>
 
- <p>Now moving further, let us take a look how Netflix viewership has grown in recent years..
+</br></br>
+<text  x=40 y=600 style="float:left;font-size: 18px ; font: Lato ; " >Next, we are going to have a look at Netflix's content</text>
+         </br>
           <form>
-              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentSummary.html" >Next >></button>
+              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentSummary.html" x=40 y=620>Next >></button>
             </form>
        </p>
 </body>     
