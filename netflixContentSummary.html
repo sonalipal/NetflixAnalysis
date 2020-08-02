@@ -1,22 +1,118 @@
+
+  
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+
+<style> /* set the CSS */
+
+body { font: 12px Arial;}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: black;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+body{
+        background-color: whitesmoke;
+     }
+
+    :root {
+      --line-chart-color: #4682b4;
+      --annotation-context-color: rgb(52, 11, 235);
+      --annotation-above-color: #00BFA5;
+      --annotation-anomaly-color: #E8336D;
+    }
+
+     svg {
+        background-color: white;
+        font-family: 'Lato';
+     }
+
+     .axis, .axis text {
+       fill: var(--line-chart-color);
+     }
+
+     .axis line, path {
+      stroke: "black" 
+      stroke-width: 2px;
+     }
+     //var(--line-chart-color);
+
+     path {
+       fill: none;
+     }
+
+
+
+    text.title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<body>
+    <p> Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
+        founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
+        The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
+        including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
+        including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
+        Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
+        the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
+        Today, the company produces and distributes content from countries all over the globe.
+    </p>
+    
+    <text class="title" x=40 y=50>Netflix Content Analysis </text>
+  
+      <script src="https://d3js.org/d3.v4.js"></script>
+     
+      
+  
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="my_dataviz">
+</div>
 
 <script>
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 50, right: 30, bottom: 80, left: 200},
-    width =  500 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+const margin = {top: 40, right: 100, bottom: 100, left: 50},
+    width = 960,
+    height = 500 
+  
+  
+    // Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")		
+    .style("opacity", 0);
+
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("body")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -24,32 +120,51 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+  
+
+        svg.append("text")
+        .attr("x", (10))             
+        .attr("y", (20))
+        .attr("text-anchor", "left")  
+        .style("font-size", "18px") 
+        .style("text-decoration", "underline")
+        .attr("stroke", "grey")  
+        .text("Hover over each bar to see the number of shows in each category");
+
+
+        
+
+
+   
+   
+   
+
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category.csv", 
        function(data) {
-    // sort data
-  data.sort(function(b, a) {
-    return a.show_count - b.show_count;
-  });
-    
- console.log(data);
-    
-   
-       // X axis
-  var x = d3.scaleBand()
-    .range([ 0, width ])
-    .domain(data.map(function(d) { return d.category; }))
-    .padding(0.5);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x)) //
-    .selectAll("text")
-      .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end");
+          // sort data
+        data.sort(function(b, a) {
+          return a.show_count - b.show_count;
+        });
 
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, 2300])
+      console.log(data);
+    
+       // X axis
+      var x = d3.scaleBand()
+        .range([ 0, width ])
+        .domain(data.map(function(d) { return d.category; }))
+        .padding(0.5);
+        svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x)) //
+        .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+
+
+    // Add Y axis
+    var y = d3.scaleLinear()
+    .domain([0, 2500])
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y))
@@ -58,11 +173,14 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .attr("fill", "#5D6971")
-        .text("Average House Price - (£)");
-; 
+        .attr("fill", "#5D6971");
 
-     // Bars
+
+
+
+  
+
+   // Bars
   svg.selectAll("mybar")
     .data(data)
     .enter()
@@ -74,18 +192,35 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
       .attr("fill", "steelblue")//#69b3a2
      ;
     
+        
+        
+     
+      
+  // Create a rect on top of the svg area: this rectangle recovers mouse position
+  svg
+    .append('rect')
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .attr('width', width)
+    .attr('height', height)
+    .on('mouseover', mouseover)
+    .on('mousemove', mousemove)
+    .on('mouseout', mouseout);
+
+
+
+  
     
 })
+
 </script>
-</body>
  <p>Now moving further, let us take a look how Netflix viewership has grown in recent years..
           <form>
-              <button type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentTrend.html" >Take a look</button>
+              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentTrend.html" >Next >></button>
             </form>
        </p>
-       <p>Click Home to go back to Main Page
-          <form>
-          <button type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/index.html" >HOME</button>
-        </form>
-       </p>
+       
+
+</body>
+    
 
