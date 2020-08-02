@@ -136,7 +136,12 @@ var svg = d3.select("#my_dataviz")
 
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", 
+       function(d){
+    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total: d.Total,Movies: d.Movies, Shows: d.Shows }
+  },
+
+   function(data) {
 
      // List of groups (here I have one group per column)
      var allGroup = ["Total","Movies", "Shows"]
@@ -194,8 +199,8 @@ svg.selectAll("mylabels")
 
 
 // Add X axis --> it is a date format
-var x =  d3.scaleLinear()   //d3.scaleTime()
-    .domain([2008,2019])                                  //.domain(d3.extent(data, function(d) { return +d.Year; }))
+var x = d3.scaleTime() //d3.scaleLinear()   //
+          .domain(d3.extent(data, function(d) { return d.Year; }))  //.domain([2008,2019]) 
   .range([ 0, width ]);
 svg.append("g")
   .attr("transform", "translate(0," + height + ")")
