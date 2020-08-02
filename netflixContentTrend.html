@@ -162,6 +162,7 @@ var svg = d3.select("#my_dataviz")
         .attr("y", (30))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
+        .style("font","Lato")
         .style("text-decoration", "underline")  
         .attr("stroke", "grey")  
         .text("New Movies/TV-Shows added per year");
@@ -227,6 +228,7 @@ svg.selectAll("mylabels")
     .style("fill", function(d){ return myColor(d)})
     .text(function(d){ return d})
     .attr("text-anchor", "left")
+    .style("font", "Lato")
     .style("alignment-baseline", "middle")
     .attr("stroke", function(d){ return myColor(d)})  
     .attr("font-size" , "14px")
@@ -295,9 +297,9 @@ d3.select("#selectButton").on("change", function(d) {
 
 </script>
 
-<text  x=40 y=600 style="float:left;font-size: 15px ; font: Lato ; " >Data Sources: </text>
-<a href="https://en.wikipedia.org/wiki/Netflix" width="1500" height="20" x=40 y=620  style="font-size: 15px ; font: Lato ; ">https://en.wikipedia.org/wiki/Netflix ; </a>
-<a href="https://www.kaggle.com/shivamb/netflix-shows" width="1500" height="200" x=40 y=640 style="font-size: 15px ; font: Lato ; ">https://www.kaggle.com/shivamb/netflix-shows</a>
+<text  x=40 y=600 style="float:left;font-size: 12px ; font: Lato ; " >Data Sources: </text>
+<a href="https://en.wikipedia.org/wiki/Netflix" width="1500" height="20" x=40 y=620  style="font-size: 12px ; font: Lato ; ">https://en.wikipedia.org/wiki/Netflix ; </a>
+<a href="https://www.kaggle.com/shivamb/netflix-shows" width="1500" height="200" x=40 y=640 style="font-size: 12px ; font: Lato ; ">https://www.kaggle.com/shivamb/netflix-shows</a>
 
 </text>
 
