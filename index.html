@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 
@@ -40,10 +41,10 @@ body{
      }
 
      .axis line, path {
-      stroke: "black" 
+      stroke: "black";
       stroke-width: 2px;
      }
-     //var(--line-chart-color);
+
 
      path {
        fill: none;
@@ -70,15 +71,17 @@ body{
 
 </style>
 <body>
-    <p style="font-size:18px;" > Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
-        founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
-        The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
-        including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
-        including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
-        Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
-        the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
-        Today, the company produces and distributes content from countries all over the globe.
-    </p>
+
+    <p>
+    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
+  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
+</br> </p></br>
+  </p>
+  <p style="font-size: 18px ; font: 'Lato'" x=30 y=500> Netflix is the world's leading internet entertainment service with 158 million paid memberships in over 190 countries enjoying TV series, documentaries and feature films across a wide variety of genres and languages.  
+    Back when Netflix started in 1998, they rented out and even sold DVD copies of content over the mail. The major shift happened in 2010 when they ushered into digital streaming services. 
+    They kept on investing in personalization and user experience, and that has made them one of the premier media streaming services in the world.  </br> </br>
+  This analysis is about how Netflix's diverse content helped them achieve this tremendous growth.</p>
+    
     
     <text class="title" x=40 y=50>Netflix Revenue Analysis</text>
   
@@ -98,8 +101,8 @@ body{
 
 // set the dimensions and margins of the graph
 const margin = {top: 40, right: 100, bottom: 40, left: 100},
-    width = 660 - margin.left - margin.right,
-    height = 500 - margin.left - margin.right;
+    width = 960,
+    height = 320; 
   
   
     // Define the div for the tooltip
@@ -280,7 +283,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
         .attr("r", 5)		
         .attr("cx", function(d) { return x(d.year); })		 
         .attr("cy", function(d) { return y(d.revenue); })	
-        .attr("fill" , "#4682b4")	
+        .attr("fill" , "red")	
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
@@ -300,7 +303,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "#4682b4")
+      .attr("stroke", "red")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.year) })
@@ -352,7 +355,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 
 </script>
 
- <p style="font-size:18px;">Now moving further, let us take a look how Netflix viewership has grown in recent years..
+ <p style="font-size:18px;">Next, we are going to analyze revenue and paid membership growth.
           <form>
               <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixMemberGrowth.html" >Next >></button>
             </form>
