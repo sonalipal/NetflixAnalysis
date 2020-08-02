@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<title>Netflix User Growth Analysis</title>
 
 <style> /* set the CSS */
 
@@ -71,19 +72,20 @@ body{
 
 </style>
 <body>
+    <h1 style="font-size: 30px ; font: 'Lato'" x=30 y=500>Netflix Growth Analysis</h1>
 
     <p>
-    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
-  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
+    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="130" style="float:left"
+  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br>
 </br> </p></br>
   </p>
   <p style="font-size: 18px ; font: 'Lato'" x=30 y=500> Netflix is the world's leading internet entertainment service with 158 million paid memberships in over 190 countries enjoying TV series, documentaries and feature films across a wide variety of genres and languages.  
     Back when Netflix started in 1998, they rented out and even sold DVD copies of content over the mail. The major shift happened in 2010 when they ushered into digital streaming services. 
     They kept on investing in personalization and user experience, and that has made them one of the premier media streaming services in the world.  </br> </br>
-  This analysis is about how Netflix's diverse content helped them achieve this tremendous growth.</p>
+  This analysis is about establishing a correlation between Netflix's revenue growth, membership growth and the growth in total number of contents in recent years</p>
     
     
-    <text class="title" x=40 y=50>Netflix Revenue Analysis</text>
+    <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; "">Netflix Revenue Analysis</text>
   
       <script src="https://d3js.org/d3.v4.js"></script>
    
@@ -143,8 +145,8 @@ var svg = d3.select("body")
 
 
         svg.append("text")
-        .attr("x", (400))             
-        .attr("y", (330))
+        .attr("x", (460))             
+        .attr("y", (205))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
         .attr("stroke", "grey")  
@@ -152,16 +154,16 @@ var svg = d3.select("body")
 
        
         svg.append("text")
-        .attr("x", (660))             
-        .attr("y", (370))
+        .attr("x", (650))             
+        .attr("y", (255))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
         .attr("stroke", "grey")  
         .text("Rev:$6,780 mil.");
 
         svg.append("text")
-        .attr("x", (660))             
-        .attr("y", (355))
+        .attr("x", (650))             
+        .attr("y", (240))
         .attr("text-anchor", "left")  
         .style("font-size", "15px")  
         .attr("stroke", "grey")  
@@ -185,7 +187,7 @@ var svg = d3.select("body")
 
         svg.append("text")
         .attr("x", (320))             
-        .attr("y", (465))
+        .attr("y", (300))
         .attr("text-anchor", "left")  
         .style("font-size", "15px")  
         .attr("stroke", "grey")  
@@ -194,7 +196,7 @@ var svg = d3.select("body")
 
         svg.append("text")
         .attr("x", (320))             
-        .attr("y", (480))
+        .attr("y", (315))
         .attr("text-anchor", "left")  
         .style("font-size", "15px") 
         .attr("stroke", "grey")  
@@ -219,8 +221,8 @@ var svg = d3.select("body")
     //line              
         svg.append("line")
         
-            .attr("x1", 665)
-            .attr("y1", 330)
+            .attr("x1", 690)
+            .attr("y1", 200)
             .attr("x2", 930)
             .attr("y2", 0)
             .attr("stroke-width", 1)
@@ -354,14 +356,16 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 })
 
 </script>
-
- <p style="font-size:18px;">Next, we are going to analyze revenue and paid membership growth.
+</br></br>
+<text  x=40 y=600 style="float:left;font-size: 18px ; font: Lato ; " >Next, we are going to analyze revenue and paid membership growth.</text>
+         </br>
           <form>
-              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixMemberGrowth.html" >Next >></button>
+              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixMemberGrowth.html" x=40 y=620>Next >></button>
             </form>
-       </p>
+    
   
        
 
 </body>
     
+
