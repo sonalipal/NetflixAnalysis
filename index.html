@@ -224,11 +224,15 @@ var svg = d3.select("body")
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_rev_trend.csv", 
+       function(d){
+    return {  year : d3.timeParse("%Y-%m-%d")(d.year), revenue : d.revenue}
+  },
+       
        function(data) {
  console.log(data);
     
        // Add X axis --> it is a date format
-    var x =  d3.scaleLinear()   //d3.scaleTime()
+    var x =  d3.d3.scaleTime()  //scaleLinear()   //d3.scaleTime()
        .domain(d3.extent(data, function(d) { return + d.year; }))
       .range([ 0, width ]);
     svg.append("g")
