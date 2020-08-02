@@ -136,15 +136,15 @@ var svg = d3.select("#my_dataviz")
 
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/top_country_trend.csv", 
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/content_trend.csv", 
        function(d){
-    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total: d.Total,Movies: d.Movies, Shows: d.Shows }
+    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total: d.Total,Movies: d.Movies, TVShows: d.TVShows }
   },
 
    function(data) {
 
      // List of groups (here I have one group per column)
-     var allGroup = ["Total","Movies", "Shows"]
+     var allGroup = ["Total","Movies", "TVShows"]
 
 // add the options to the button
 d3.select("#selectButton")
