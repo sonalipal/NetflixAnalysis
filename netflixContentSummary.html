@@ -1,6 +1,6 @@
 
-  
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <meta charset="utf-8">
 
 
@@ -72,17 +72,23 @@ body{
 
 </style>
 <body>
-    <p> Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
-        founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
-        The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
-        including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
-        including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
-        Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
-        the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
-        Today, the company produces and distributes content from countries all over the globe.
-    </p>
+    <p>
+        <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
+      style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
+    </br> </p></br>
+      </p>
+      <p style="font-size: 18px ; font: 'Lato'" x=30 y=500>
+        Netflix's popularity can be primarily attributed to it diverse, curated content catered towards viewers of all age and demographics .</br>
+        </br>
+
+        Netflix is available in 190 countries and it's estimated to be at 37 percent of world’s internet population! Currently, Netflix has more than 6K contents in various genres, produced in USA, India, UK and many other countries.
+        Let's look at it's contents distribution across various genres.
+
+      </p></br>
+
     
-    <text class="title" x=40 y=50>Netflix Content Analysis </text>
+    
+    <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; ">Netflix Content Analysis </text>
   
       <script src="https://d3js.org/d3.v4.js"></script>
      
@@ -101,7 +107,7 @@ body{
 // set the dimensions and margins of the graph
 const margin = {top: 40, right: 100, bottom: 150, left: 50},
     width = 960,
-    height = 500 
+    height = 300 
   
   
     // Define the div for the tooltip
@@ -125,6 +131,7 @@ var svg = d3.select("body")
         .attr("y", (20))
         .attr("text-anchor", "left")  
         .style("font-size", "18px") 
+        .style("font-family" , "Lato")
         .style("text-decoration", "underline")
         .attr("stroke", "grey")  
         .text("Hover over each bar to see the number of shows in each category");
@@ -203,7 +210,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
       .attr("y", function(d) { return y(d.show_count); })
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.show_count); })
-      .attr("fill", "steelblue")//#69b3a2
+      .attr("fill", "red")//#69b3a2
       .on('mouseover', mouseover)
         .on('mousemove', mousemove)
         .on('mouseout', mouseout);
@@ -219,13 +226,12 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
 })
 
 </script>
- <p>Now moving further, let us take a look how Netflix viewership has grown in recent years..
-          <form>
-              <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentTrend.html" >Next >></button>
-            </form>
-       </p>
-       
+</br></br>
+<text  x=40 y=600 style="float:left;font-size: 18px ; font: Lato ; " > Next, let's analyze how these contents have grown over the years. </text>
+</br>
+<form>
+    <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentTrend.html" x=40 y=620>Next >></button>
+  </form>
 
 </body>
     
-
