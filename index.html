@@ -116,6 +116,8 @@ var svg = d3.select("body")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+    
+  $("svg").css({top: 200, left: 200, position:'absolute'})
 
   svg.append("text")
         .attr("x", (10))             
