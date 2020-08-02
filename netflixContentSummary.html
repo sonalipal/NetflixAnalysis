@@ -1,321 +1,230 @@
 
-  
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <meta charset="utf-8">
+
 
 <style> /* set the CSS */
 
-  body { font: 12px Arial;}
-  
-  div.tooltip {	
-      position: absolute;			
-      text-align: center;			
-      width: 60px;					
-      height: 28px;					
-      padding: 2px;				
-      font: 12px sans-serif;		
-      background: black;	
-      border: 0px;		
-      border-radius: 8px;			
-      pointer-events: none;			
-  }
-  
-  body{
-          background-color: whitesmoke;
-       }
-  
-      :root {
-        --line-chart-color: #4682b4;
-        --annotation-context-color: rgb(52, 11, 235);
-        --annotation-above-color: #00BFA5;
-        --annotation-anomaly-color: #E8336D;
-      }
-  
-       svg {
-          background-color: white;
-          font-family: 'Lato';
-       }
-  
-       .axis, .axis text {
-         fill: var(--line-chart-color);
-       }
-  
-       .axis line, path {
-        stroke: "black" ;
-        stroke-width: 2px;
-       }
-       
-  
-       path {
-         fill: none;
-       }
-  
-  
-  
-      text.title {
-        font-size: 1.2em;
-        font-weight: bold;
-      }
-  
-      .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
+body { font: 12px Arial;}
 
-  .option-select {
-  margin-top: 20px;
-  margin-left: 40px;
-  fill: #64b646;
-  width: 100;
-  }
-  
-  </style>
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 90px;					
+    height: 40px;					
+    padding: 2px;				
+    font: 10px sans-serif;		
+    background:  white;	   
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
 
+body{
+        background-color: whitesmoke;
+     }
+
+    :root {
+      --line-chart-color: #4682b4;
+      --annotation-context-color: rgb(52, 11, 235);
+      --annotation-above-color: #00BFA5;
+      --annotation-anomaly-color: #E8336D;
+    }
+
+     svg {
+        background-color: white;
+        font-family: 'Lato';
+     }
+
+     .axis, .axis text {
+       fill: var(--line-chart-color);
+     }
+
+     .axis line, path {
+      stroke: "black"; 
+      stroke-width: 2px;
+     }
+
+     path {
+       fill: none;
+     }
+
+
+
+    text.title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
 <body>
-  <p>
-    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
-  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
-</br> </p></br>
-  </p>
-  <p style="font-size: 18px ; font: 'Lato'" x=30 y=500>
-    Netflix contents are broadly categorized in two types - Movies and TV-Shows . 
-    
-    Let us examine the trend of new content addition for each of these categories . </br>
-    Choose a type from the drop-down to see  its trend .
-  </p></br>
-  <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; " >Netflix Content Growth Trend </text>
-  <!--text style="background-color: rgb(91, 226, 50); color: white;font-size: 18px ; font: Lato ; font-weight: bold;" x=30 y=500>Select >></text-->
-  
-  <!---img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="700" height="480" style="float:right"
-  style="vertical-align:bottom"--->
-  <text width="600" height="250" style="background-color: white; vertical-align:bottom;float:right ; font-size: 15px ;font: 'Lato'; font-weight: bold;" ; >
-   ** Despite rising competition ,</br>
-  Netflix still has the largest subscriber count in 2020       </br></br>
-   ** 60 million US adults have a Netflix subscription </br></br>
-   ** Over 40% of the Netflix subscriber base is in the US and Canada</br></br>
-   **As of December 2019,  the largest Netflix subscriber regions include:</br></br>
-   US and Canada (UCAN): 67 million</br>
-   Europe, Middle East, and Africa (UMEA): 47 million</br>
-   Latin America (LATAM): 29 million</br>
-   Asia-Pacific (APAC): 14 million</br></br>
-  
-   
-   ** Netflix was incorporating more technology than </br>
-   its competitors much earlier on </br>
-   **Netflix spent $1.5 billion on research&development in 2019</br>
-   Netflix is one of the largest Amazon Web Services users</br>
-   and could be spending around $9.6 million per month for AWS</br></br>
-   
-   ** The 2020 Coronavirus pandemic caused a surge of Netflix streaming</br>
-  </text>
-  
-  
-   
+    <p>
+        <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
+      style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
+    </br> </p></br>
+      </p>
+      <p style="font-size: 18px ; font: 'Lato'" x=30 y=500>
+        Netflix's popularity can be primarily attributed to it diverse, curated content catered towards viewers of all age and demographics .</br>
+        </br>
 
+        Netflix is available in 190 countries and it's estimated to be at 37 percent of world’s internet population! Currently, Netflix has more than 6K contents in various genres, produced in USA, India, UK and many other countries.
+        Let's look at it's contents distribution across various genres.
+
+      </p></br>
+
+    
+    
+    <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; ">Netflix Content Analysis </text>
+  
+      <script src="https://d3js.org/d3.v4.js"></script>
+     
+      
+  
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
-
-<!-- Initialize a select button -->
-<select id="selectButton"></select>
-
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="my_dataviz">
+</div>
 
-
-<!-- Color Scale -->
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script>
 
+
 // set the dimensions and margins of the graph
-//var margin = {top: 10, right: 100, bottom: 30, left: 50},
-    //width = 660 - margin.left - margin.right,
-    //height = 400 - margin.top - margin.bottom;
-
-    const margin = {top: 40, right: 100, bottom: 50, left: 50},
-    width = 730,
-    height = 250 
-
-
-   // var img = document.createElement("#my_dataviz"); 
- 
- //img.src = url("https://sonalipal.github.io/NetflixAnalysis/img1.jpg"); 
- //var src = document.getElementById("x"); 
+const margin = {top: 40, right: 100, bottom: 150, left: 50},
+    width = 960,
+    height = 300 
   
+  
+    // Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")		
+    .style("opacity", 30);
+
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("body")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .append("g")
+  .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-    
-  svg.append("text")
+
+        svg.append("text")
         .attr("x", (10))             
-        .attr("y", (30))
+        .attr("y", (20))
         .attr("text-anchor", "left")  
-        .style("font-size", "15px") 
-        .style("font","Lato")
-        .style("text-decoration", "underline")  
+        .style("font-size", "18px") 
+        .style("font-family" , "Lato")
+        .style("text-decoration", "underline")
         .attr("stroke", "grey")  
-        .text("New Movies/TV-Shows added per year");
+        .text("Hover over each bar to see the number of shows in each category");
 
 
+        
+   
+   
 
-//Read the data
-d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/content_trend.csv", 
+// Parse the Data
+d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category.csv", 
+       function(data) {
+          // sort data
+        data.sort(function(b, a) {
+          return a.show_count - b.show_count;
+        });
 
-function(d){
-    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total : d.Total,Movies: d.Movies, TVShows: d.TVShows }
-  },
-
-
-function(data) {
-
- 
-
-     // List of groups (here I have one group per column)
-     var allGroup = ["Total","Movies", "TVShows"]
-
-// add the options to the button
-d3.select("#selectButton")
-  .selectAll('myOptions')
-   .data(allGroup)
-  .enter()
-  .append('option')
-  .attr("class", "option-select")
-  .text(function (d) { return d; }) // text showed in the menu
-  .attr("value", function (d) { return d; }) ;// corresponding value returned by the button
-
-// A color scale: one color for each group
-var myColor = d3.scaleOrdinal()
-  .domain(allGroup)
-  //.range(d3.schemeSet2);
-  .range(["red", "brown","green"] );    //d3.schemeCategory10;
-
-// Add X axis --> it is a date format
-//var x = d3.scaleLinear()
-  //.domain([2009,2020])
-  //.range([ 0, width ]);
-//svg.append("g")
-  //.attr("transform", "translate(0," + height + ")")
-  //.call(d3.axisBottom(x));
-
-// Add one dot in the legend for each name.
-svg.selectAll("mydots")
-  .data(allGroup)
-  .enter()
-  .append("circle")
-    .attr("cx", 50)
-    .attr("cy", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .attr("r", 5)
-    .style("fill", function(d){ return myColor(d)})
-
-// Add one dot in the legend for each name.
-svg.selectAll("mylabels")
-  .data(allGroup)
-  .enter()
-  .append("text")
-    .attr("x", 70)
-    .attr("y", function(d,i){ return 50 + i*25} ) // 100 is where the first dot appears. 25 is the distance between dots function(d,i){ return 100 + i*25}
-    .style("fill", function(d){ return myColor(d)})
-    .text(function(d){ return d})
-    .attr("text-anchor", "left")
-    .style("font", "Lato")
-    .style("alignment-baseline", "middle")
-    .attr("stroke", function(d){ return myColor(d)})  
-    .attr("font-size" , "14px")
+      console.log(data);
     
+       // X axis
+      var x = d3.scaleBand()
+        .range([ 0, width ])
+        .domain(data.map(function(d) { return d.category; }))
+        .padding(0.05);
+        svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x)) //
+        .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+
+
+    // Add Y axis
+    var y = d3.scaleLinear()
+    .domain([0, 2500])
+    .range([ height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y))
+    .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .attr("fill", "#5D6971");
+
+
+
+    // tooltips
+    var div = d3.select("body").append('div')
+        .attr('class', 'tooltip')
+        .style('display', 'none');
+    function mouseover(){
+        div.style('display', 'inline');
+    }
+    function mousemove(){
+        var d = d3.select(this).data()[0]
+        //console.log(d.show_count)
+        div
+            .html((d.category) + '<hr/>' + (d.show_count))
+            .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+            .style("display", "inline-block");
+    }
+    function mouseout(){
+        div.style('display', 'none');
+    }
+
   
 
-
-
-// Add X axis --> it is a date format
-var x =  d3.scaleTime() //d3.scaleLinear()   //
-          .domain(d3.extent(data, function(d) { return d.Year; }))  //.domain([2008,2019]) 
-  .range([ 0, width ]);                                                
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x));
-
-
-// Add Y axis
-var y = d3.scaleLinear()
-   .domain([0, d3.max(data, function(d) { return +d.Total; })])       //.domain( [0,20])
-  .range([ height, 0 ]);
-svg.append("g")
-  .call(d3.axisLeft(y));
-
-// Initialize line with group a
-var line = svg
-  .append('g')
-  .append("path")
-    .datum(data)
-    .attr("d", d3.line()
-      .x(function(d) { return x( d.Year) })
-      .y(function(d) { return y( d.Total) })
-    )
-    .attr("stroke", function(d){ return myColor("Total") })
-    .style("stroke-width", 4)
-    .style("fill", "none")
-
-// A function that update the chart
-function update(selectedGroup) {
-
-  // Create new data with the selection?
-  var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
-
-
-  // Give these new data to update line
-  line
-      .datum(dataFilter)
-      .transition()
-      .duration(1000)
-      .attr("d", d3.line()
-        .x(function(d) { return x( d.time) })
-        .y(function(d) { return y( d.value) })
-      )
-      .attr("stroke", function(d){ return myColor(selectedGroup) })
-}
-
-// When the button is changed, run the updateChart function
-d3.select("#selectButton").on("change", function(d) {
-    // recover the option that has been chosen
-    var selectedOption = d3.select(this).property("value")
-    // run the updateChart function with this selected option
-    update(selectedOption)
-})
-
+   // Bars
+  svg.selectAll("mybar")
+    .data(data)
+    .enter()
+    .append("rect")
+      .attr("x", function(d) { return x(d.category); })
+      .attr("y", function(d) { return y(d.show_count); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.show_count); })
+      .attr("fill", "red")//#69b3a2
+      .on('mouseover', mouseover)
+        .on('mousemove', mousemove)
+        .on('mouseout', mouseout);
+ 
+    
 })
 
 </script>
-
-<text  x=40 y=600 style="float:left;font-size: 12px ; font: Lato ; " >Data Sources: </text>
-<a href="https://en.wikipedia.org/wiki/Netflix" width="1500" height="20" x=40 y=620  style="font-size: 12px ; font: Lato ; ">https://en.wikipedia.org/wiki/Netflix ; </a>
-<a href="https://www.kaggle.com/shivamb/netflix-shows" width="1500" height="200" x=40 y=640 style="font-size: 12px ; font: Lato ; ">https://www.kaggle.com/shivamb/netflix-shows</a>
-
-</text>
-
-
-      
+</br></br>
+<text  x=40 y=600 style="float:left;font-size: 18px ; font: Lato ; " > Next, let's analyze how these contents have grown over the years. </text>
+</br>
+<form>
+    <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixContentTrend.html" x=40 y=620>Next >></button>
+  </form>
 
 </body>
-   
-
-
- 
-
-
-
     
