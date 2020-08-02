@@ -334,7 +334,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
       .attr("cx", x(selectedData.year))
       .attr("cy", y(selectedData.paid_membership))
     focusText
-      .html("$" + selectedData.paid_membership+ " mil.")
+      .html( selectedData.paid_membership+ " mil.")
       .attr("x", x(selectedData.year)+15)
       .attr("y", y(selectedData.paid_membership)+ 10)
     }
