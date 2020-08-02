@@ -11,11 +11,11 @@ body { font: 12px Arial;}
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
-    height: 28px;					
+    width: 90px;					
+    height: 40px;					
     padding: 2px;				
-    font: 12px sans-serif;		
-    background: black;	
+    font: 10px sans-serif;		
+    background:  white;	   
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
@@ -42,10 +42,9 @@ body{
      }
 
      .axis line, path {
-      stroke: "black" 
+      stroke: "black"; 
       stroke-width: 2px;
      }
-     //var(--line-chart-color);
 
      path {
        fill: none;
@@ -108,7 +107,7 @@ const margin = {top: 40, right: 100, bottom: 150, left: 50},
     // Define the div for the tooltip
 var div = d3.select("body").append("div")	
     .attr("class", "tooltip")		
-    .style("opacity", 0);
+    .style("opacity", 30);
 
 
 // append the svg object to the body of the page
@@ -120,7 +119,6 @@ var svg = d3.select("body")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-  
 
         svg.append("text")
         .attr("x", (10))             
@@ -133,9 +131,6 @@ var svg = d3.select("body")
 
 
         
-
-
-   
    
    
 
@@ -177,6 +172,25 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
 
 
 
+    // tooltips
+    var div = d3.select("body").append('div')
+        .attr('class', 'tooltip')
+        .style('display', 'none');
+    function mouseover(){
+        div.style('display', 'inline');
+    }
+    function mousemove(){
+        var d = d3.select(this).data()[0]
+        //console.log(d.show_count)
+        div
+            .html((d.category) + '<hr/>' + (d.show_count))
+            .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+            .style("display", "inline-block");
+    }
+    function mouseout(){
+        div.style('display', 'none');
+    }
 
   
 
@@ -190,26 +204,17 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/category
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.show_count); })
       .attr("fill", "steelblue")//#69b3a2
-     ;
+      .on('mouseover', mouseover)
+        .on('mousemove', mousemove)
+        .on('mouseout', mouseout);
     
         
         
      
-      
-  // Create a rect on top of the svg area: this rectangle recovers mouse position
-  svg
-    .append('rect')
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .attr('width', width)
-    .attr('height', height)
-    .on('mouseover', mouseover)
-    .on('mousemove', mousemove)
-    .on('mouseout', mouseout);
-
-
-
+ 
   
+
+
     
 })
 
