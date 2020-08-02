@@ -113,7 +113,7 @@ var svg = d3.select("body")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    attr("align","center")
+    .attr("align","center")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
@@ -352,7 +352,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
 
 </script>
 
- <p>Now moving further, let us take a look how Netflix viewership has grown in recent years..
+ <p style="font-size:18px;">Now moving further, let us take a look how Netflix viewership has grown in recent years..
           <form>
               <button class="button" type="submit" formaction="https://sonalipal.github.io/NetflixAnalysis/netflixMemberGrowth.html" >Next >></button>
             </form>
