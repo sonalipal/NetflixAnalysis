@@ -233,7 +233,7 @@ d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/netflix_
     
        // Add X axis --> it is a date format
     var x =  d3.scaleTime()   //d3.scaleTime()
-       .domain(d3.extent(data, function(d) { return + d.year; }))
+       .domain(d3.extent(data, function(d) { return d.year; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
