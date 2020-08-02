@@ -39,10 +39,10 @@
        }
   
        .axis line, path {
-        stroke: "black" 
+        stroke: "black" ;
         stroke-width: 2px;
        }
-       //var(--line-chart-color);
+       
   
        path {
          fill: none;
@@ -78,17 +78,43 @@
   </style>
 
 <body>
-  <p> Netflix, Inc. is an American technology and media services provider and production company headquartered in Los Gatos, California, 
-      founded in 1997 by Reed Hastings and Marc Randolph in Scotts Valley, California. 
-      The company's primary business is its subscription-based streaming service which offers online streaming of a library of films and television series, 
-      including those produced in-house.[14] As of April 2020, Netflix had over 193 million paid subscriptions worldwide, 
-      including 73 million in the United States.[15] It is available worldwide except in the following: mainland China (due to local restrictions), 
-      Syria, North Korea, and Crimea (due to U.S. sanctions). The company also has offices in France, United States, United Kingdom, Brazil, 
-      the Netherlands, India, Japan, and South Korea.[16] Netflix is a member of the Motion Picture Association (MPA). 
-      Today, the company produces and distributes content from countries all over the globe.
+  <p>
+    <img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="1500" height="200" style="float:left"
+  style="vertical-align:bottom"></img></br> </br></br> </br></br> </br></br> </br></br> </br></br> </br>
+</br> </p></br>
   </p>
+  <p style="font-size: 18px ; font: 'Lato'" x=30 y=500>
+    Netflix contents are broadly categorized in two types - Movie sand TV-Shows . Let us examine the trend of new content addition for each of these categories . </br>
+    Choose a type from the drop-down to see  its trend .
+  </p></br>
+  <text class="title" x=40 y=50 style="font-size: 18px ; font: Lato ; " >Netflix Content Growth Trend </text>
+  <text style="background-color: rgb(91, 226, 50); color: white;font-size: 18px ; font: Lato ; font-weight: bold;" x=30 y=500>Select >></text>
   
-  <text class="title"  style="background-color: #4CAF50; color: white; text-align: center; font-size: 16px ;" x=40 y=50>Select a group to see trend >> </text>
+  <!---img src="https://sonalipal.github.io/NetflixAnalysis/img1.jpg" alt="Girl in a jacket" width="700" height="480" style="float:right"
+  style="vertical-align:bottom"--->
+  <text width="600" height="250" style="background-color: white; vertical-align:bottom;float:right ; font-size: 15px ;font: 'Lato'; font-weight: bold;" ; >
+   ** Despite rising competition ,</br>
+  Netflix still has the largest subscriber count in 2020       </br></br>
+   ** 60 million US adults have a Netflix subscription </br></br>
+   ** Over 40% of the Netflix subscriber base is in the US and Canada</br></br>
+   **As of December 2019,  the largest Netflix subscriber regions include:</br></br>
+   US and Canada (UCAN): 67 million</br>
+   Europe, Middle East, and Africa (UMEA): 47 million</br>
+   Latin America (LATAM): 29 million</br>
+   Asia-Pacific (APAC): 14 million</br></br>
+  
+   
+   ** Netflix was incorporating more technology than </br>
+   its competitors much earlier on </br>
+   **Netflix spent $1.5 billion on research&development in 2019</br>
+   Netflix is one of the largest Amazon Web Services users</br>
+   and could be spending around $9.6 million per month for AWS</br></br>
+   
+   ** The 2020 Coronavirus pandemic caused a surge of Netflix streaming</br>
+  </text>
+  
+  
+   
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -100,6 +126,7 @@
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
+
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script>
@@ -109,9 +136,15 @@
     //width = 660 - margin.left - margin.right,
     //height = 400 - margin.top - margin.bottom;
 
-    const margin = {top: 40, right: 100, bottom: 120, left: 50},
-    width = 960,
-    height = 500 
+    const margin = {top: 40, right: 100, bottom: 50, left: 50},
+    width = 730,
+    height = 250 
+
+
+   // var img = document.createElement("#my_dataviz"); 
+ 
+ //img.src = url("https://sonalipal.github.io/NetflixAnalysis/img1.jpg"); 
+ //var src = document.getElementById("x"); 
   
 
 // append the svg object to the body of the page
@@ -119,7 +152,7 @@ var svg = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
@@ -128,7 +161,7 @@ var svg = d3.select("#my_dataviz")
         .attr("x", (10))             
         .attr("y", (30))
         .attr("text-anchor", "left")  
-        .style("font-size", "18px") 
+        .style("font-size", "15px") 
         .style("text-decoration", "underline")  
         .attr("stroke", "grey")  
         .text("New Movies/TV-Shows added per year");
@@ -137,11 +170,15 @@ var svg = d3.select("#my_dataviz")
 
 //Read the data
 d3.csv("https://raw.githubusercontent.com/sonalipal/CS498DataViz/master/content_trend.csv", 
-       function(d){
-    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total: d.Total,Movies: d.Movies, TVShows: d.TVShows }
+
+function(d){
+    return {  Year : d3.timeParse("%Y-%m-%d")(d.Year), Total : d.Total,Movies: d.Movies, TVShows: d.TVShows }
   },
 
-   function(data) {
+
+function(data) {
+
+ 
 
      // List of groups (here I have one group per column)
      var allGroup = ["Total","Movies", "TVShows"]
@@ -160,7 +197,7 @@ d3.select("#selectButton")
 var myColor = d3.scaleOrdinal()
   .domain(allGroup)
   //.range(d3.schemeSet2);
-  .range(d3.schemeCategory10);
+  .range(["red", "brown","green"] );    //d3.schemeCategory10;
 
 // Add X axis --> it is a date format
 //var x = d3.scaleLinear()
@@ -177,7 +214,7 @@ svg.selectAll("mydots")
   .append("circle")
     .attr("cx", 50)
     .attr("cy", function(d,i){ return 50 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
-    .attr("r", 7)
+    .attr("r", 5)
     .style("fill", function(d){ return myColor(d)})
 
 // Add one dot in the legend for each name.
@@ -192,16 +229,16 @@ svg.selectAll("mylabels")
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
     .attr("stroke", function(d){ return myColor(d)})  
-    .attr("font-size" , "16px")
+    .attr("font-size" , "14px")
     
   
 
 
 
 // Add X axis --> it is a date format
-var x = d3.scaleTime() //d3.scaleLinear()   //
+var x =  d3.scaleTime() //d3.scaleLinear()   //
           .domain(d3.extent(data, function(d) { return d.Year; }))  //.domain([2008,2019]) 
-  .range([ 0, width ]);
+  .range([ 0, width ]);                                                
 svg.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x));
@@ -220,14 +257,12 @@ var line = svg
   .append("path")
     .datum(data)
     .attr("d", d3.line()
-      .x(function(d) { return x(+d.Year) })
-      .y(function(d) { return y(+d.Total) })
+      .x(function(d) { return x( d.Year) })
+      .y(function(d) { return y( d.Total) })
     )
     .attr("stroke", function(d){ return myColor("Total") })
     .style("stroke-width", 4)
     .style("fill", "none")
-
-console.log(data);
 
 // A function that update the chart
 function update(selectedGroup) {
@@ -235,16 +270,15 @@ function update(selectedGroup) {
   // Create new data with the selection?
   var dataFilter = data.map(function(d){return {time: d.Year, value:d[selectedGroup]} })
 
-console.log(dataFilter);
-  
+
   // Give these new data to update line
   line
       .datum(dataFilter)
       .transition()
       .duration(1000)
       .attr("d", d3.line()
-        .x(function(d) { return x(+d.time) })
-        .y(function(d) { return y(+d.value) })
+        .x(function(d) { return x( d.time) })
+        .y(function(d) { return y( d.value) })
       )
       .attr("stroke", function(d){ return myColor(selectedGroup) })
 }
@@ -260,10 +294,14 @@ d3.select("#selectButton").on("change", function(d) {
 })
 
 </script>
-<p>   refernece : <a href="https://en.wikipedia.org/wiki/Netflix">wikipedia</a><br />
-        <a href="https://www.kaggle.com/shivamb/netflix-shows">kaggle</a>
-         
-      </p>
+
+<text  x=40 y=600 style="float:left;font-size: 15px ; font: Lato ; " >Data Sources: </text>
+<a href="https://en.wikipedia.org/wiki/Netflix" width="1500" height="20" x=40 y=620  style="font-size: 15px ; font: Lato ; ">https://en.wikipedia.org/wiki/Netflix ; </a>
+<a href="https://www.kaggle.com/shivamb/netflix-shows" width="1500" height="200" x=40 y=640 style="font-size: 15px ; font: Lato ; ">https://www.kaggle.com/shivamb/netflix-shows</a>
+
+</text>
+
+
       
 
 </body>
